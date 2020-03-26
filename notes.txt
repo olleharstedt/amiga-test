@@ -1,0 +1,5 @@
+https://blitterstudio.com/setting-up-an-amiga-cross-compiler/
+
+    $ export VBCC=~/kod/vbcc
+
+    $ vc +aos68k -o hello helloworld.c
