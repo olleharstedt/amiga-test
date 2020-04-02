@@ -57,20 +57,20 @@ int main(int argc, char **argv)
 
     return_code = RETURN_OK;
 
-    if (NULL == (GfxBase = (struct GfxBase *) OpenLibrary("graphics.library",37L)))
+    if (NULL == (GfxBase = (struct GfxBase *) OpenLibrary("graphics.library",37L))) {
         return_code = RETURN_FAIL;
-    else {
-        if (NULL == (IntuitionBase = (struct IntuitionBase *)OpenLibrary("intuition.library",37L)))
+    } else {
+        if (NULL == (IntuitionBase = (struct IntuitionBase *)OpenLibrary("intuition.library",37L))) {
             return_code = RETURN_FAIL;
-        else {
+        } else {
             /* opened library, need a viewport to render a sprite over. */
-            if (NULL == (screen = OpenScreenTagList(NULL, NULL)))
+            if (NULL == (screen = OpenScreenTagList(NULL, NULL))) {
                 return_code = RETURN_FAIL;
-            else {
+            } else {
                 viewport = &screen->ViewPort;
-                if (-1 == (sprite_num = GetSprite(&sprite, 2)))
+                if (-1 == (sprite_num = GetSprite(&sprite, 2))) {
                     return_code = RETURN_WARN;
-                else {
+                } else {
                     /* Calculate the correct base color register number, */
                     /* set up the color registers.                       */
                     color_reg = 16 + ((sprite_num & 0x06) << 1);
