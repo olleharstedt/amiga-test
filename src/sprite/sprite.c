@@ -37,6 +37,13 @@ UWORD sprite_data[] = {
 
 /**
  * Source: https://wiki.amigaos.net/wiki/Hardware_Sprites
+ *
+ * Compile with
+ *   vc +aos68k -lauto -lamiga sprite.c -o sprite
+ * and if linking fails, use
+ *   vlink -mrel -bamigahunk -x -Bstatic -Cvbcc -nostdlib $VBCC/targets/m68k-amigaos/lib/startup.o "/tmp/fileOIxFdU.o"   -lauto -lamiga -s -Rshort -L$VBCC/targets/m68k-amigaos/lib -lvc -o sprite
+ * with the added -mrel switch.
+ * Some info here: https://github.com/Sakura-IT/SonnetAmiga/issues/27
  */
 int main(int argc, char **argv)
 {
