@@ -32,6 +32,9 @@ void Test(int x, int y)
 
 /**
  * Slightly crazy test for macro compatibility layer between Amiga and SDL.
+ *
+ * Compile with:
+ *   m68k-amigaos-gcc macro.c -o macro
  */
 int main()
 {
