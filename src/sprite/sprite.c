@@ -35,8 +35,7 @@ UWORD sprite_data[] = {
     0, 0            /* reserved, must init to 0 0 */
 };
 
-struct NewScreen my_new_screen=
-{
+struct NewScreen my_new_screen = {
 	0, 0, 320, 256, 5,
     DETAILPEN,
     BLOCKPEN,
@@ -63,6 +62,8 @@ struct NewScreen my_new_screen=
  *   m68k-amigaos-gcc sprite.c -o sprite
  * In my case:
  *   /opt/amiga/bin/m68k-amigaos-gcc -I /opt/amiga/m68k-amigaos/ndk-include/ sprite.c -o sprite
+ *
+ * For me, this works when emulating A500+, but not for A500.
  */
 int main(int argc, char **argv)
 {
@@ -84,6 +85,7 @@ int main(int argc, char **argv)
         } else {
             /* opened library, need a viewport to render a sprite over. */
             if (NULL == (screen = OpenScreen(&my_new_screen))) {
+            //if (NULL == (screen = OpenScreenTagList(NULL, NULL))) {
                 return_code = RETURN_FAIL;
             } else {
                 viewport = &screen->ViewPort;
@@ -104,7 +106,7 @@ int main(int argc, char **argv)
                     sprite.height = 9;  /* so system knows layout of data later */
 
                     /* install sprite data and move sprite to start position. */
-                    ChangeSprite(NULL, &sprite, (APTR)sprite_data);
+                    ChangeSprite(NULL, &sprite, (APTR) sprite_data);
                     MoveSprite(NULL, &sprite, 30, 30);
 
                     /* move the sprite back and forth. */
