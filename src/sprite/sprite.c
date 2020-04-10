@@ -21,7 +21,8 @@ struct IntuitionBase *IntuitionBase = NULL;
 extern struct Custom custom;
 
 /* real boring sprite data */
-UWORD sprite_data[] = {
+/* OBS: __chip is a gcc attribute, not tested with vbcc */
+UWORD __chip sprite_data[] = {
     0, 0,           /* position control           */
     0xffff, 0x0000, /* image data line 1, color 1 */
     0xffff, 0x0000, /* image data line 2, color 1 */
