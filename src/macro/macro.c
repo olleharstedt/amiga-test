@@ -1,4 +1,23 @@
 #ifdef __AMIGA__
+#include <exec/types.h>
+#include <graphics/gfx.h>
+#include <graphics/gfxbase.h>
+#include <graphics/gfxmacros.h>
+#include <graphics/sprite.h>
+#include <clib/graphics_protos.h>
+#include <intuition/intuitionbase.h>
+#include <hardware/custom.h>
+#include <hardware/dmabits.h>
+#include <libraries/dos.h>
+
+#include <proto/exec.h>
+#include <proto/dos.h>
+#include <proto/intuition.h>
+#else
+#include "SDL.h"
+#endif
+
+#ifdef __AMIGA__
 #define SPRITE SimpleSprite
 #else
 #define SPRITE SDL_Surface
@@ -38,9 +57,18 @@ void Test(int x, int y)
  */
 int main()
 {
-    int x, y;
-    x = 1;
-    y = 2;
-    TEST(x, y);
+    /*
+     * Define sprite data
+     * Define screen properties
+     * Init
+     *   Amiga: GfxBase, IntuitionBase
+     *   SDL: SDL_Init(VIDEO | AUDIO | etc)
+     * Open screen
+     * Allocate sprite and get sprite
+     * Set sprite colors
+     * Loop
+     *   Move sprite
+     * Cleanup and quit
+     */
     return 0;
 }
